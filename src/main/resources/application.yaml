@@ -20,8 +20,6 @@ spring:
     properties:
       hibernate.format_sql: true
       hibernate.default_batch_fetch_size: 100
-#      hibernate.dialect: org.hibernate.dialect.MySQLDialect
-  h2.console.enabled: false
   sql.init.mode: always
 #    date.rest:
 #      base-path: /api

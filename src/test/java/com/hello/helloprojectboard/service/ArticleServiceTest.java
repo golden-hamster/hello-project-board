@@ -4,7 +4,6 @@ import com.hello.helloprojectboard.domain.Article;
 import com.hello.helloprojectboard.domain.UserAccount;
 import com.hello.helloprojectboard.domain.type.SearchType;
 import com.hello.helloprojectboard.dto.ArticleDto;
-import com.hello.helloprojectboard.dto.ArticleUpdateDto;
 import com.hello.helloprojectboard.dto.ArticleWithCommentsDto;
 import com.hello.helloprojectboard.dto.UserAccountDto;
 import com.hello.helloprojectboard.repository.ArticleRepository;
@@ -19,7 +18,6 @@ import org.springframework.data.domain.Pageable;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
@@ -56,14 +54,14 @@ class ArticleServiceTest {
         SearchType searchType = SearchType.TITLE;
         String searchKeyword = "title";
         Pageable pageable = Pageable.ofSize(20);
-        given(articleRepository.findByTitle(searchKeyword, pageable)).willReturn(Page.empty());
+        given(articleRepository.findByTitleContaining(searchKeyword, pageable)).willReturn(Page.empty());
 
         // When
         Page<ArticleDto> articles = sut.searchArticles(searchType, searchKeyword, pageable);
 
         // Then
         assertThat(articles).isEmpty();
-        then(articleRepository).should().findByTitle(searchKeyword, pageable);
+        then(articleRepository).should().findByTitleContaining(searchKeyword, pageable);
     }
 
     @DisplayName("게시글을 조회하면, 게시글을 반환한다.")
@@ -166,10 +164,10 @@ class ArticleServiceTest {
 
     private UserAccount createUserAccount() {
         return UserAccount.of(
-                "uno",
+                "Isack",
                 "password",
-                "uno@email.com",
-                "Uno",
+                "Isack@email.com",
+                "Isack",
                 null
         );
     }
@@ -194,23 +192,23 @@ class ArticleServiceTest {
                 content,
                 hashtag,
                 LocalDateTime.now(),
-                "Uno",
+                "Isack",
                 LocalDateTime.now(),
-                "Uno");
+                "Isack");
     }
 
     private UserAccountDto createUserAccountDto() {
         return UserAccountDto.of(
                 1L,
-                "uno",
+                "Isack",
                 "password",
-                "uno@mail.com",
-                "Uno",
+                "Isack@mail.com",
+                "Isack",
                 "This is memo",
                 LocalDateTime.now(),
-                "uno",
+                "Isack",
                 LocalDateTime.now(),
-                "uno"
+                "Isack"
         );
     }
 

@@ -1,0 +1,22 @@
+package com.hello.helloprojectboard.dto.request;
+
+import com.hello.helloprojectboard.dto.ArticleCommentDto;
+import com.hello.helloprojectboard.dto.UserAccountDto;
+
+/**
+ * DTO for {@link com.hello.helloprojectboard.domain.ArticleComment}
+ */
+public record ArticleCommentRequest(Long articleId, String content) {
+
+    public static ArticleCommentRequest of(Long articleId, String content) {
+        return new ArticleCommentRequest(articleId, content);
+    }
+
+    public ArticleCommentDto toDto(UserAccountDto userAccountDto) {
+        return ArticleCommentDto.of(
+                articleId,
+                userAccountDto,
+                content
+        );
+    }
+}

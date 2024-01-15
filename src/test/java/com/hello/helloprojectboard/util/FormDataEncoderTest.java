@@ -74,6 +74,6 @@ class FormDataEncoderTest {
     }
 
     @TestComponent
-    public static class EmptyConfig{}
+     static class EmptyConfig{}
 
 }

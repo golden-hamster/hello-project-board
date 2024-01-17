@@ -10,7 +10,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.Map;
 
 @TestComponent
- class FormDataEncoder {
+ public class FormDataEncoder {
 
     private final ObjectMapper mapper;
 

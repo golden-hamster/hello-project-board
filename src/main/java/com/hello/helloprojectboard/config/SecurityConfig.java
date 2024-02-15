@@ -37,8 +37,13 @@ public class SecurityConfig {
                                 HttpMethod.GET,
                                 "/",
                                 "/articles",
-                                "/articles/search-hashtag"
+                                "/articles/search-hashtag",
+                                "/users/form",
+                                "/users"
                         ).permitAll()
+                        .mvcMatchers(HttpMethod.POST,
+                                "/users/form")
+                        .permitAll()
                         .anyRequest().authenticated()  // 나머지 요청은 인증된 사용자만 허용
                 )
                 .formLogin(withDefaults()) // 기본 로그인 폼 사용
@@ -48,6 +53,7 @@ public class SecurityConfig {
                                 .userService(oAuth2UserService)
                         )
                 )
+                .csrf().disable()
                 .build();
     }
 

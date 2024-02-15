@@ -8,6 +8,8 @@ logging:
     ore.hibernate.type.descriptor.sql.BasicBinder: trace
 
 spring:
+  profiles:
+    active: development
   datasource:
     url: ${LOCAL_DB_URL}
     username: ${LOCAL_DB_USERNAME}

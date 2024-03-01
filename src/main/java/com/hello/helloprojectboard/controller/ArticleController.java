@@ -3,7 +3,6 @@ package com.hello.helloprojectboard.controller;
 import com.hello.helloprojectboard.dto.security.BoardPrincipal;
 import com.hello.helloprojectboard.domain.constant.FormStatus;
 import com.hello.helloprojectboard.domain.constant.SearchType;
-import com.hello.helloprojectboard.dto.UserAccountDto;
 import com.hello.helloprojectboard.dto.request.ArticleRequest;
 import com.hello.helloprojectboard.dto.response.ArticleResponse;
 import com.hello.helloprojectboard.dto.response.ArticleWithCommentsResponse;
